@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commissions | Iron & Ember</title>
+    <meta name="description"
+        content="Order custom hand-forged items. Learn about the commissioning process from design to delivery.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">Iron & <span style="color:var(--color-text)">Ember</span></a>
+                <button class="mobile-menu-btn">☰</button>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="commission.html" class="active-link">Commissions</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="section page-header">
+            <div class="container text-center">
+                <h1>Custom Commissions</h1>
+                <p class="lead-text">Your vision, forged in fire. How to clear a path from idea to artifact.</p>
+            </div>
+        </section>
+
+        <!-- Process Steps -->
+        <section class="section">
+            <div class="container">
+                <h2 class="text-center" style="margin-bottom: 3rem;">The Process</h2>
+                <div class="process-timeline">
+                    <!-- Step 1 -->
+                    <div class="timeline-item">
+                        <div class="timeline-number">1</div>
+                        <div class="timeline-content">
+                            <h3>Inquiry</h3>
+                            <p>Fill out the form below with your concept, preferred materials, and budget.</p>
+                        </div>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="timeline-item">
+                        <div class="timeline-number">2</div>
+                        <div class="timeline-content">
+                            <h3>Consultation & Quote</h3>
+                            <p>We discuss details. I provide a sketch and a cost estimate. Lead times vary.</p>
+                        </div>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="timeline-item">
+                        <div class="timeline-number">3</div>
+                        <div class="timeline-content">
+                            <h3>Deposit</h3>
+                            <p>A 50% non-refundable deposit secures your spot in the queue.</p>
+                        </div>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="timeline-item">
+                        <div class="timeline-number">4</div>
+                        <div class="timeline-content">
+                            <h3>Creation</h3>
+                            <p>The work begins. Updates can be provided upon request.</p>
+                        </div>
+                    </div>
+                    <!-- Step 5 -->
+                    <div class="timeline-item">
+                        <div class="timeline-number">5</div>
+                        <div class="timeline-content">
+                            <h3>Delivery</h3>
+                            <p>Final payment. The piece is shipped or available for pickup.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Inquiry Form -->
+        <section class="section bg-darker">
+            <div class="container">
+                <h2 class="text-center">Start Your Project</h2>
+                <div class="form-container">
+                    <form action="#" method="POST" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="type">Project Type</label>
+                            <select id="type" name="type">
+                                <option value="knife">Custom Knife</option>
+                                <option value="tool">Tool / Hardware</option>
+                                <option value="sculpture">Sculpture / Decor</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Description & Details</label>
+                            <textarea id="message" name="message" rows="5"
+                                placeholder="Describe your idea, size, materials..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%;">Submit Inquiry</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p>&copy; 2026 Iron & Ember. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <style>
+        .active-link {
+            color: var(--color-primary);
+        }
+
+        .active-link::after {
+            width: 100%;
+        }
+
+        /* Inline styles for unique components to this page (or move to styles.css) */
+        .process-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: var(--spacing-md);
+            align-items: flex-start;
+        }
+
+        .timeline-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--color-primary);
+            min-width: 50px;
+            text-align: right;
+            border-right: 2px solid var(--color-secondary);
+            padding-right: var(--spacing-md);
+            line-height: 1;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.02);
+            padding: var(--spacing-lg);
+            border: 1px solid var(--color-secondary);
+            border-radius: var(--border-radius);
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-text);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: #0d0604;
+            border: 1px solid var(--color-secondary);
+            color: var(--color-text);
+            font-family: var(--font-main);
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--color-primary);
+            outline: none;
+        }
+    </style>
+</body>
+
+</html>

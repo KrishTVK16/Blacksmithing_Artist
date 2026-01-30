@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Iron & Ember</title>
+    <meta name="description" content="Get in touch with the artist. Email, location, and inquiry form.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">Iron & <span style="color:var(--color-text)">Ember</span></a>
+                <button class="mobile-menu-btn">☰</button>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="commission.html">Commissions</a></li>
+                    <li><a href="contact.html" class="active-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="section page-header">
+            <div class="container text-center">
+                <h1>Contact the Artist</h1>
+                <p class="lead-text">Questions, collaborations, or studio visits.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="contact-grid">
+                    <!-- Contact Info -->
+                    <div class="contact-info">
+                        <h2>Get In Touch</h2>
+                        <ul class="info-list">
+                            <li>
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <strong>Email</strong>
+                                    <p><a href="mailto:artist@domain.com">artist@domain.com</a></p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <strong>Location</strong>
+                                    <p>Iron & Ember Forge<br>[City, State]</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <strong>Hours</strong>
+                                    <p>Studio Visits by Appointment Only</p>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="social-block">
+                            <h3>Follow the Fire</h3>
+                            <div class="social-links" style="justify-content: flex-start;">
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-facebook"></i></a>
+                                <a href="#"><i class="fab fa-youtube"></i></a>
+                                <a href="#"><i class="fab fa-tiktok"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form (Reused/Similar to Commission) -->
+                    <div class="contact-form-wrapper">
+                        <div class="form-container" style="margin: 0; max-width: 100%;">
+                            <form action="#" method="POST">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" id="name" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="subject">Subject</label>
+                                    <input type="text" id="subject" name="subject" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message">Message</label>
+                                    <textarea id="message" name="message" rows="5" required></textarea>
+                                </div>
+                                <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Iron & Ember. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <style>
+        .active-link {
+            color: var(--color-primary);
+        }
+
+        .active-link::after {
+            width: 100%;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+        }
+
+        .info-list {
+            list-style: none;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .info-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .info-list i {
+            color: var(--color-primary);
+            font-size: 1.2rem;
+            margin-top: 5px;
+        }
+
+        .contact-info h2 {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        /* Form styling from Commission page is reused via copying inline styles into styles.css in next step if desired, 
+           but for now I'll include the necessary block in styles.css or rely on common classes if I move them. 
+           I duplicated the form styles in commission.html inline. I should move them to styles.css for consistency. 
+        */
+
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Inline form styles since they are not in global CSS yet */
+        .form-container {
+            background: rgba(255, 255, 255, 0.02);
+            padding: var(--spacing-lg);
+            border: 1px solid var(--color-secondary);
+            border-radius: var(--border-radius);
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-text);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: #0d0604;
+            border: 1px solid var(--color-secondary);
+            color: var(--color-text);
+            font-family: var(--font-main);
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--color-primary);
+            outline: none;
+        }
+    </style>
+</body>
+
+</html>
