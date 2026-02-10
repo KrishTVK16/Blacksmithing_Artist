@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     const themeToggle = document.querySelector('.theme-toggle');
     const body = document.body;
-    
+
     // Check for saved theme preference, default to light mode
     const savedTheme = localStorage.getItem('theme') || 'light';
     if (savedTheme === 'dark') {
@@ -43,15 +43,15 @@ document.addEventListener('DOMContentLoaded', () => {
         body.classList.add('light-mode');
         themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
     }
-    
+
     if (themeToggle) {
         themeToggle.addEventListener('click', () => {
             body.classList.toggle('light-mode');
             const isLightMode = body.classList.contains('light-mode');
-            
+
             // Update icon
             themeToggle.innerHTML = isLightMode ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-            
+
             // Save preference
             localStorage.setItem('theme', isLightMode ? 'light' : 'dark');
         });
@@ -80,6 +80,25 @@ document.addEventListener('DOMContentLoaded', () => {
                         item.classList.remove('show');
                     }
                 });
+            });
+        });
+    }
+    // Scroll to Top Button
+    const scrollToTopBtn = document.querySelector('.scroll-to-top');
+
+    if (scrollToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollToTopBtn.classList.add('show');
+            } else {
+                scrollToTopBtn.classList.remove('show');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
             });
         });
     }
