@@ -377,7 +377,7 @@ body.light-mode {
 }
 
 body.light-mode header {
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: #ffffff;
     border-bottom: 1px solid #ddd;
 }
 
@@ -601,10 +601,11 @@ body.light-mode .collection-overlay {
 
 .testimonial-author {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     gap: 0.75rem;
-    text-align: left;
+    text-align: center;
     min-height: 60px;
 }
 
@@ -817,22 +818,90 @@ body.light-mode .collection-overlay {
 }
 
 .process-step h3 {
-    color: var(--color-text);
     margin-bottom: var(--spacing-sm);
 }
 
 /* About Page Sections */
-.journey-timeline {
+.about-grid {
     display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: var(--border-radius);
+    display: block;
+}
+
+.about-cta {
+    text-align: center;
+}
+
+/* About Page Sections */
+/* About Page Sections */
+.journey-timeline {
+    display: flex;
+    flex-direction: column;
     gap: 2rem;
     margin-top: 3rem;
 }
 
-.timeline-item {
+.journey-timeline .timeline-item {
     display: grid;
     grid-template-columns: 100px 1fr;
     gap: 2rem;
     align-items: start;
+    margin-bottom: 0;
+    /* Override default if needed */
+}
+
+/* Specific styling for Journey Timeline Year */
+.journey-timeline .timeline-year {
+    background: var(--color-primary);
+    /* Orange */
+    color: white;
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    height: auto;
+    /* Allow natural height */
+    width: 100%;
+    /* Fill the grid column */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Specific styling for Journey Timeline Content */
+.journey-timeline .timeline-content {
+    display: block;
+    /* Reset grid from global .timeline-content */
+    background: white;
+    color: #333;
+    /* Dark text for readability on white */
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: none;
+    /* Reset potential borders */
+}
+
+.journey-timeline .timeline-content h3 {
+    color: #2a150b;
+    /* Dark brown for heading */
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+.journey-timeline .timeline-content p {
+    color: #555;
+    margin-bottom: 0;
+    line-height: 1.6;
 }
 
 .timeline-year {
@@ -850,6 +919,13 @@ body.light-mode .collection-overlay {
     border: 1px solid var(--color-secondary);
     border-radius: var(--border-radius);
     padding: 1.5rem;
+
+    /* New Grid Layout for Content */
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 1.5rem;
+    align-items: center;
+    /* Center vertically specifically requested "center" */
 }
 
 .timeline-content h3 {
@@ -1341,6 +1417,7 @@ body.light-mode .about-content .skills-list {
     padding-bottom: var(--spacing-md);
     border-bottom: 1px solid var(--color-secondary);
 }
+
 /* Scroll to Top Button */
 .scroll-to-top {
     position: fixed;
@@ -1373,4 +1450,165 @@ body.light-mode .about-content .skills-list {
     background-color: var(--color-secondary);
     transform: translateY(-3px);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Home 2 Responsive Styles */
+@media (max-width: 1024px) {
+    /* Timeline Item Grid removal already handled globally */
+    /* .timeline-item { grid-template-columns: ... } NO LONGER NEEDED */
+
+    .timeline-content {
+        grid-template-columns: 80px 1fr;
+        gap: 1.5rem;
+    }
+
+    .hero-video {
+        height: 60vh;
+        min-height: 400px;
+    }
+
+    /* Remove connector lines */
+    .timeline::before,
+    .timeline::after,
+    .timeline-item::before,
+    .timeline-item::after,
+    .timeline-icon::before,
+    .timeline-icon::after {
+        display: none !important;
+        content: none !important;
+        border: none !important;
+    }
+
+    .timeline-icon {
+        border: none !important;
+        box-shadow: none !important;
+        /* optional if shadow creates a line effect */
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Timeline - Stack vertically */
+    .timeline-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .timeline-item {
+        /* Ensure item itself doesn't impose grid */
+        display: block;
+        border: none !important;
+    }
+
+    /* Reset old rule just in case */
+    /* .timeline-item { display: flex; ... } replaced by .timeline-content rule above */
+
+    .timeline-year {
+        width: 100%;
+        max-width: 120px;
+    }
+
+    /* Remove connector lines explicit for mobile too */
+    .timeline::before,
+    .timeline::after,
+    .timeline-item::before,
+    .timeline-item::after,
+    .timeline-icon::before,
+    .timeline-icon::after {
+        display: none !important;
+        content: none !important;
+    }
+
+    .skills-list {
+        display: inline-block;
+        text-align: left;
+        margin-bottom: 2rem;
+    }
+
+    /* About Journey Timeline Responsive */
+    .journey-timeline .timeline-item {
+        grid-template-columns: 80px 1fr;
+        gap: 1rem;
+    }
+
+    .journey-timeline .timeline-year {
+        font-size: 1rem;
+        padding: 0.5rem;
+    }
+
+    .journey-timeline .timeline-content {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+
+    /* Stack on very small screens if needed, 
+       but side-by-side often works for simple year/text. 
+       Let's keep side-by-side but reduce gap/padding further or stack if preferred.
+       User requested "like above image" which implies the structure, 
+       but mobile might need stacking. Let's stack for safety on very small screens.
+    */
+    .journey-timeline .timeline-item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+
+    .journey-timeline .timeline-year {
+        width: 100%;
+        max-width: 120px;
+        margin: 0 auto;
+    }
+}
+
+/* Hero Video */
+/* Hero Video */
+.hero-video {
+    height: 70vh;
+    /* Give more height on mobile for content */
+    min-height: auto;
+}
+
+.hero-video .hero-content h1 {
+    font-size: 2.5rem;
+}
+
+.hero-video .hero-content p {
+    font-size: 1rem;
+}
+
+/* Grids */
+.collections-grid,
+.stats-grid,
+.process-steps,
+.testimonials-grid {
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+/* About Section Responsive */
+.about-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+}
+
+.about-image {
+    margin: 0 auto 2rem auto;
+    max-width: 500px;
+}
+
+.about-content {
+    text-align: center;
+}
+
+.skills-list {
+    display: inline-block;
+    text-align: left;
+    margin-bottom: 2rem;
+}
 }
