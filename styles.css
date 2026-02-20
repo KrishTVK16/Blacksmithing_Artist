@@ -153,8 +153,9 @@ header {
 
 nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
+    gap: 3rem;
 }
 
 .logo {
@@ -167,14 +168,20 @@ nav {
 
 .nav-links {
     display: flex;
-    gap: var(--spacing-md);
+    gap: 2rem;
     list-style: none;
     align-items: center;
+    flex: 1;
 }
 
 .nav-links li {
     display: flex;
     align-items: center;
+}
+
+/* Push Login, Sign Up & theme toggle to the far right */
+.nav-links li:has(> .btn:not(.btn-secondary)) {
+    margin-left: auto;
 }
 
 .nav-links a {
@@ -208,6 +215,12 @@ nav {
     color: var(--color-text);
     font-size: 1.5rem;
     cursor: pointer;
+    margin-left: auto;
+}
+
+/* Mobile-only Home links - hidden on desktop */
+.mobile-home-link {
+    display: none !important;
 }
 
 /* Footer */
@@ -479,9 +492,7 @@ body.light-mode .video-background {
     background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
 }
 
-body.light-mode .video-overlay {
-    background: rgba(255, 255, 255, 0.1);
-}
+
 
 body.light-mode .hero-video .hero-content h1,
 body.light-mode .hero-video .hero-content p {
@@ -881,27 +892,39 @@ body.light-mode .collection-overlay {
 .journey-timeline .timeline-content {
     display: block;
     /* Reset grid from global .timeline-content */
-    background: white;
-    color: #333;
-    /* Dark text for readability on white */
+    background: #1a1a1a;
+    color: #ddd;
     padding: 2rem;
     border-radius: var(--border-radius);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     border: none;
     /* Reset potential borders */
 }
 
 .journey-timeline .timeline-content h3 {
-    color: #2a150b;
-    /* Dark brown for heading */
+    color: var(--color-primary);
     margin-bottom: 0.5rem;
     font-size: 1.3rem;
 }
 
 .journey-timeline .timeline-content p {
-    color: #555;
+    color: #bbb;
     margin-bottom: 0;
     line-height: 1.6;
+}
+
+/* Light mode overrides for timeline */
+body.light-mode .journey-timeline .timeline-content {
+    background: white;
+    color: #333;
+}
+
+body.light-mode .journey-timeline .timeline-content h3 {
+    color: #2a150b;
+}
+
+body.light-mode .journey-timeline .timeline-content p {
+    color: #555;
 }
 
 .timeline-year {
@@ -1121,6 +1144,7 @@ body.light-mode .about-content .skills-list {
     margin-right: 0.5rem;
 }
 
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
     h1 {
@@ -1145,6 +1169,7 @@ body.light-mode .about-content .skills-list {
     .nav-links {
         display: none;
         flex-direction: column;
+        align-items: center;
         position: absolute;
         top: 100%;
         left: 0;
@@ -1155,12 +1180,42 @@ body.light-mode .about-content .skills-list {
         border-bottom: 1px solid var(--color-secondary);
     }
 
+    .nav-links li {
+        margin-left: 0 !important;
+    }
+
     .nav-links.active {
         display: flex;
     }
 
     .mobile-menu-btn {
         display: block;
+    }
+
+    /* Show mobile Home links, hide desktop dropdown */
+    .mobile-home-link {
+        display: flex !important;
+    }
+
+    .desktop-dropdown {
+        display: none !important;
+    }
+
+    /* Active state for mobile home links */
+    .mobile-home-link a.active {
+        color: var(--color-primary);
+    }
+
+    /* Stack hero buttons vertically */
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-md);
+    }
+
+    .hero-buttons .btn {
+        width: 250px;
+        text-align: center;
     }
 
     .steps-preview {
@@ -1178,13 +1233,12 @@ body.light-mode .about-content .skills-list {
 /* Hero */
 .hero {
     position: relative;
-    height: 80vh;
-    min-height: 500px;
+    height: 100vh;
+    min-height: 600px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: radial-gradient(circle at center, #2a150b 0%, #000000 100%);
-    border-bottom: 2px solid var(--color-primary);
+    background: #0a0400;
     overflow: hidden;
     text-align: center;
 }
@@ -1197,10 +1251,22 @@ body.light-mode .about-content .skills-list {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2670&auto=format&fit=crop') center/cover no-repeat;
-    opacity: 0.3;
+    background: url('https://blacksmithscompany.org/wp-content/uploads/2023/11/modern-blacksmithing-what-is-made-by-them-today7myl.jpg-1G8U.jpg') center/cover no-repeat;
+    opacity: 0.65;
     z-index: 0;
-    filter: sepia(0.8) hue-rotate(-20deg) contrast(1.2);
+    filter: sepia(0.3) contrast(1.1);
+}
+
+/* Dark rgba overlay — same as Home2 .video-overlay */
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
 }
 
 .hero-content {
@@ -1313,9 +1379,46 @@ body.light-mode .about-content .skills-list {
     justify-content: space-between;
     align-items: flex-end;
     margin-bottom: var(--spacing-xl);
-    border-bottom: 1px solid #331508;
     padding-bottom: var(--spacing-sm);
     text-align: center;
+}
+
+/* Section header - stack on tablet and mobile */
+@media (max-width: 1024px) {
+    .section-header {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: var(--spacing-md);
+    }
+}
+
+/* Tablet only - center 3rd card */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .grid-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-gallery .card:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        justify-self: center;
+        max-width: calc(50% - var(--spacing-md) / 2);
+    }
+
+    .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .testimonials-grid .testimonial-card:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        justify-self: center;
+        max-width: calc(50% - 1rem);
+    }
+
+    /* Stats grid 2x2 on tablet */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 .btn-sm {
@@ -1598,8 +1701,8 @@ body.light-mode .about-content .skills-list {
 }
 
 .about-image {
-    margin: 0 auto 2rem auto;
-    max-width: 500px;
+
+    max-width: 100%;
 }
 
 .about-content {
@@ -1610,5 +1713,4 @@ body.light-mode .about-content .skills-list {
     display: inline-block;
     text-align: left;
     margin-bottom: 2rem;
-}
 }
